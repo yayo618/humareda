@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+      body {
+	  margin: 0;
+	  touch-action: none;
+      }
+      canvas {
+	  display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="../textiles/three.min.js"></script>
+    <script src="../gallery/js/OrbitControls.js"></script>
+    <script src="../cannon.js-master/build/cannon.min.js"></script>
+    <script>
+      var scene, camera, renderer;
+      scene = new THREE.Scene();
+      camera = new THREE.PerspectiveCamera(60,
+        window.innerWidth/window.innerHeight);
+      camera.position.x = 5;
+      camera.rotation.y = Math.PI/3;
+      renderer = new THREE.WebGLRenderer();
+      renderer.setSize(window.innerWidth,window.innerHeight);
+      document.body.appendChild(renderer.domElement);
+
+      var txrFloor = new THREE.TextureLoader(); 
+      var floorTxr = new txrFloor.load("../textiles/img/PISOa.png");
+      var floor = new THREE.Mesh(
+	  new THREE.PlaneGeometry(10,20,10,10),
+	  new THREE.MeshBasicMaterial({color:0xffffff,map:floorTxr}));
+      floor.rotation.x = -Math.PI/2;
+      floor.rotation.z = Math.PI/2;
+      floor.position.y = -2;      
+      scene.add(floor);
+
+      function drawScene(){
+	  renderer.render(scene,camera);
+	  requestAnimationFrame(drawScene);
+      }
+      drawScene();
+    </script>
+  </body>
+</html>
