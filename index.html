@@ -12,10 +12,15 @@
     </style>
   </head>
   <body>
-    <script src="../textiles/three.min.js"></script>
-    <script src="../gallery/js/OrbitControls.js"></script>
+    <!--<script src="../cannon.js-master/libs/Three.js"></script>-->
+    <!--<script src="../textiles/three.min.js"></script>-->
+    <!--<script src="../gallery/js/OrbitControls.js"></script>-->
     <script src="../cannon.js-master/build/cannon.min.js"></script>
-    <script>
+    <script type="module">
+      import * as THREE from "../gallery/js/three.module.js";
+      import {GUI} from "../gallery/js/dat.gui.module.js";
+      import {MapControls} from "../gallery/js/OrbitControls.js";
+      
       var scene, camera, renderer;
       scene = new THREE.Scene();
       camera = new THREE.PerspectiveCamera(60,
@@ -36,7 +41,36 @@
       floor.position.y = -2;      
       scene.add(floor);
 
+      //nuevo 
+      var controls = new MapControls(camera,renderer.domElement);
+
+      //cannon
+      var world = new CANNON.World();
+      world.gravity.set(0,-10,0);
+      world.broadphase = new CANNON.NaiveBroadphase();
+      var timeStamp = 1.0/60.0;
+      
+      var plane = new CANNON.Plane();
+      var planebody = new CANNON.Body({shape:plane, mass:0});
+      planebody.quaternion.setFromAxisAngle(new CANNON.Vec3(1,0,0),-Math.PI/2);
+      world.addBody(planebody);
+
+      var box = new CANNON.Box(new CANNON.Vec3(0.5,0.5,0.5));
+      var boxBody = new CANNON.Body({shape:box,mass:5});
+      boxBody.position.set(0,5,0);
+      world.addBody(boxBody);
+
+      var bGeo = new THREE.BoxGeometry(1,1,1);
+      var bMat = new THREE.MeshBasicMaterial({color:0xffffff});
+      var bMesh = new THREE.Mesh(bGeo,bMat);
+      scene.add(bMesh);
+      //let debugRenderer = new THREE.CannonDebugRenderer(scene,world);
+      ///cannon
+
       function drawScene(){
+	  world.step(timeStamp);
+	  bMesh.position.copy(boxBody.position);
+	  //debugRenderer.update();
 	  renderer.render(scene,camera);
 	  requestAnimationFrame(drawScene);
       }
