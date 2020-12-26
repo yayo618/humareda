@@ -15,6 +15,7 @@
     <!--<script src="../cannon.js-master/libs/Three.js"></script>-->
     <!--<script src="../textiles/three.min.js"></script>-->
     <!--<script src="../gallery/js/OrbitControls.js"></script>-->
+    <script src="../cannon.js-master/examples/js/PointerLockControls.js"></script>
     <script src="../cannon.js-master/build/cannon.min.js"></script>
     <script type="module">
       import * as THREE from "../gallery/js/three.module.js";
@@ -42,7 +43,9 @@
       scene.add(floor);
 
       //nuevo 
-      var controls = new MapControls(camera,renderer.domElement);
+      //var controls = new MapControls(camera,renderer.domElement);
+      var controls = new PointerLockControls(camera,document.body);
+      scene.add(controls.getObject());
 
       //cannon
       var world = new CANNON.World();
@@ -53,10 +56,11 @@
       var plane = new CANNON.Plane();
       var planebody = new CANNON.Body({shape:plane, mass:0});
       planebody.quaternion.setFromAxisAngle(new CANNON.Vec3(1,0,0),-Math.PI/2);
+      planebody.position.set(0,-2,0);
       world.addBody(planebody);
 
       var box = new CANNON.Box(new CANNON.Vec3(0.5,0.5,0.5));
-      var boxBody = new CANNON.Body({shape:box,mass:5});
+      var boxBody = new CANNON.Body({shape:box,mass:1});
       boxBody.position.set(0,5,0);
       world.addBody(boxBody);
 
