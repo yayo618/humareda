@@ -13,8 +13,11 @@
   </head>
   <body>
     <script src="../textiles/three.min.js"></script>
-    <script src="movCameraM.js"></script>
-    <script>      
+    <!--<script src="orbitmodificado.js"></script>-->
+    <script type="module">
+      //import * as THREE from "../gallery/js/three.module.js";
+//    import {GUI} from "../gallery/js/dat.gui.module.js";
+    import {MapControls} from "./orbitmodificado.js";
       var scene, camera, renderer;
       scene = new THREE.Scene();
       camera = new THREE.PerspectiveCamera(60,
@@ -35,7 +38,13 @@
       floor.position.y = -2;      
       scene.add(floor);
 
-     animate();
+      var controls = new MapControls(camera,renderer.domElement);
+      
+      var animate = function(){
+	  requestAnimationFrame(animate);
+	  renderer.render( scene, camera );
+      }
+      animate();
     </script>
   </body>
 </html>

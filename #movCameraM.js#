@@ -7,7 +7,10 @@ body.addEventListener('touchmove', moveTouch, false);
 
 var inX = null;
 var inY = null;
-      
+
+var lastQuaternion = new Quaternion();//mejora
+lastQuaternion.copy(camera.quaternion);
+
 function startTouch(e){
     //inX = e.touches[0].pageX;
     //inY = e.touches[0].pageY;
