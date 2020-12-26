@@ -13,14 +13,15 @@
   </head>
   <body>
     <!--<script src="../cannon.js-master/libs/Three.js"></script>-->
-    <!--<script src="../textiles/three.min.js"></script>-->
+    <script src="../textiles/three.min.js"></script>
     <!--<script src="../gallery/js/OrbitControls.js"></script>-->
-    <script src="../cannon.js-master/examples/js/PointerLockControls.js"></script>
-    <script src="../cannon.js-master/build/cannon.min.js"></script>
-    <script type="module">
-      import * as THREE from "../gallery/js/three.module.js";
-      import {GUI} from "../gallery/js/dat.gui.module.js";
-      import {MapControls} from "../gallery/js/OrbitControls.js";
+    <!--<script src="../cannon.js-master/examples/js/PointerLockControls.js"></script>-->
+    <!--<script src="../cannon.js-master/build/cannon.min.js"></script>-->
+    <script src="movCameraM.js"></script>
+    <script>
+      //import * as THREE from "../gallery/js/three.module.js";
+      //import {GUI} from "../gallery/js/dat.gui.module.js";
+      //import {MapControls} from "../gallery/js/OrbitControls.js";
       
       var scene, camera, renderer;
       scene = new THREE.Scene();
@@ -44,10 +45,10 @@
 
       //nuevo 
       //var controls = new MapControls(camera,renderer.domElement);
-      var controls = new PointerLockControls(camera,document.body);
-      scene.add(controls.getObject());
+      //var controls = new PointerLockControls(camera,document.body);
+      //scene.add(controls.getObject());
 
-      //cannon
+      /*/cannon
       var world = new CANNON.World();
       world.gravity.set(0,-10,0);
       world.broadphase = new CANNON.NaiveBroadphase();
@@ -69,16 +70,18 @@
       var bMesh = new THREE.Mesh(bGeo,bMat);
       scene.add(bMesh);
       //let debugRenderer = new THREE.CannonDebugRenderer(scene,world);
-      ///cannon
-
+      ///cannon*/
+/*
       function drawScene(){
-	  world.step(timeStamp);
-	  bMesh.position.copy(boxBody.position);
+	  //world.step(timeStamp);
+	  //bMesh.position.copy(boxBody.position);
 	  //debugRenderer.update();
 	  renderer.render(scene,camera);
 	  requestAnimationFrame(drawScene);
       }
       drawScene();
+*/
+     animate();
     </script>
   </body>
 </html>
