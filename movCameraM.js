@@ -9,13 +9,12 @@ var inX = null;
 var inY = null;
       
 function startTouch(e){
-    //inX = e.touches[0].pageX;
-    //inY = e.touches[0].pageY;
-    rotateStart.set( e.touches[ 0 ].clientX, e.touches[ 0 ].clientY );
+    inX = e.touches[0].pageX;
+    inY = e.touches[0].pageY;
 }
 
 function moveTouch(e){
-/*    
+    
     if (inX === null){return;}
     if (inY === null){return;}
     
@@ -40,7 +39,7 @@ function moveTouch(e){
     }
     inX = null;
     inY = null;
-*/
+
 }
 function levantaStop(){stop();}
 
@@ -217,6 +216,7 @@ var animate = function(){
     
     renderer.render( scene, camera );
 }
+animate();
 //resize
 window.addEventListener('resize',function(){
     renderer.setSize(window.innerWidth,window.innerHeight);
