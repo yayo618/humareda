@@ -63,6 +63,9 @@
       //pared1
       var txrWallA = new THREE.TextureLoader();
       var wallATxr = new txrWallA.load("img/wall1R.png");
+      wallATxr.wrapS = THREE.RepeatWrapping;
+      wallATxr.wrapT = THREE.RepeatWrapping;
+      wallATxr.repeat.set(2,1);
       var wallA = new THREE.Mesh(
 	  new THREE.PlaneGeometry(40,3.5),
 	  new THREE.MeshBasicMaterial({color:0xffffff,map:wallATxr}));
@@ -156,24 +159,6 @@
 
       
       //pared al medio
-      /*
-	var wallM = new THREE.Mesh(
-		new THREE.BoxGeometry(0.5,3.5,4),
-		new THREE.MeshBasicMaterial({color:0xffffff}));
-	wallM.position.set(10,-0.25,-3);
-//	scene.add(wallM);
-	var wallM2 = new THREE.Mesh(
-		new THREE.BoxGeometry(0.5,3.5,4),
-		new THREE.MeshBasicMaterial({color:0xffffff}));
-	wallM2.position.set(10,-0.25,3);
-      scene.add(wallM2);
-      */
-	var wallM3 = new THREE.Mesh(
-		new THREE.BoxGeometry(0.5,1,2),
-		new THREE.MeshBasicMaterial({color:0xffffff}));
-	wallM3.position.set(10,1.25,0);
-//        scene.add(wallM3);
-
       var txrWallm1 = new THREE.TextureLoader();
       var wallm1Txr = new txrWallm1.load("img/wallm1.png");      
       var wallm1 = new THREE.Mesh(
@@ -198,10 +183,41 @@
 		new THREE.PlaneGeometry(2,0.5),
 	  new THREE.MeshBasicMaterial({color:0xffffff,map:wallm3Txr}));
       wallm3.position.set(9.75,1.25,0);
-//      wallm3.rotation.x-=Math.PI;
       wallm3.rotation.y-=Math.PI/2;
-        scene.add(wallm3);
-      
+      scene.add(wallm3);
+
+      var wallm4 = new THREE.Mesh(
+	  new THREE.PlaneGeometry(4,3.5),
+	  new THREE.MeshBasicMaterial({color:0xffffff,map:wallm2Txr})
+      );
+      wallm4.position.set(10.25,-0.25,-3);
+      wallm4.rotation.y+=Math.PI/2;
+      scene.add(wallm4);
+      var wallm5 = new THREE.Mesh(
+	  new THREE.PlaneGeometry(4,3.5),
+	  new THREE.MeshBasicMaterial({color:0xffffff,map:wallm1Txr})
+      );
+      wallm5.position.set(10.25,-0.25,3);
+      wallm5.rotation.y+=Math.PI/2;
+      scene.add(wallm5);
+      var wallm6 = new THREE.Mesh(
+	  new THREE.PlaneGeometry(2,0.5),
+	  new THREE.MeshBasicMaterial({color:0xffffff,map:wallm3Txr}));
+      wallm6.position.set(10.25,1.25,0);
+      wallm6.rotation.y+=Math.PI/2;
+      scene.add(wallm6);
+      //muros centro
+      var muroCa = new THREE.Mesh(
+	  new THREE.BoxGeometry(-2,-3.5,-0.5,0),
+	  new THREE.MeshBasicMaterial({color:0xa6a6ae}));
+      muroCa.position.set(10,-0.5,0);
+      muroCa.rotation.y = Math.PI/2;
+      var muroCb = new THREE.Mesh(
+	  new THREE.PlaneGeometry(0.5,4),
+	  new THREE.MeshBasicMaterial({color:0x90909a}));
+      muroCb.position.set(10,1,0);
+      muroCb.rotation.x = +Math.PI/2;
+      scene.add(muroCa,muroCb);
 	    fotos();
 	    cuadros();
     </script>
