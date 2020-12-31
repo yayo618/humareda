@@ -15,6 +15,7 @@
     <script src="../textiles/three.min.js"></script>
     <script src="movCameraM.js"></script>
     <script src="fotos.js"></script>
+    <script src="cuadros.js"></script>
     <script>
       var scene, camera, renderer;
       scene = new THREE.Scene();
@@ -37,37 +38,55 @@
       var txrFloor = new THREE.TextureLoader(); 
       var floorTxr = new txrFloor.load("../textiles/img/PISOa.png");
       var floor = new THREE.Mesh(
-	  new THREE.PlaneGeometry(10,20,10,10),
+	  new THREE.PlaneGeometry(10,40,10,10),
 	  new THREE.MeshBasicMaterial({color:0xffffff,map:floorTxr}));
       floor.rotation.x = -Math.PI/2;
       floor.rotation.z = Math.PI/2;
-      floor.position.y = -2;      
+      floor.position.set(10,-2,0);      
       scene.add(floor);
       //techo
       var txrCeil = new THREE.TextureLoader();
       var ceilTxr = new txrCeil.load("../textiles/img/TECHOa.png");
       var ceil = new THREE.Mesh(
-	  new THREE.PlaneGeometry(10,20,10,10),
+	  new THREE.PlaneGeometry(10,40,10,10),
 	  new THREE.MeshBasicMaterial({color:0xffffff,map:ceilTxr}));
       ceil.rotation.x = Math.PI/2;
       ceil.rotation.z = Math.PI/2;
-      ceil.position.y = 1.5;
+      ceil.position.set(10,1.5,0);
       scene.add(ceil);    
       //pared1
       var txrWallA = new THREE.TextureLoader();
       var wallATxr = new txrWallA.load("../textiles/img/wall1R.png");
       var wallA = new THREE.Mesh(
-	  new THREE.PlaneGeometry(20,3.5),
+	  new THREE.PlaneGeometry(40,3.5),
 	  new THREE.MeshBasicMaterial({color:0xffffff,map:wallATxr}));
-      wallA.position.set(0,-0.25,-5);
+      wallA.position.set(10,-0.25,-5);
       //pared2
       var wallB = new THREE.Mesh(
-	  new THREE.PlaneGeometry(20,3.5),
+	  new THREE.PlaneGeometry(40,3.5),
 	  new THREE.MeshBasicMaterial({color:0xffffff,map:wallATxr}));
-      wallB.position.set(0,-0.25,5);
+      wallB.position.set(10,-0.25,5);
       wallB.rotation.y = Math.PI;
-
       scene.add(wallA,wallB);
+	    //pared al medio
+	var wallM = new THREE.Mesh(
+		new THREE.BoxGeometry(0.5,3.5,4),
+		new THREE.MeshBasicMaterial({color:0xffffff}));
+	wallM.position.set(10,-0.25,-3);
+	scene.add(wallM);
+	var wallM2 = new THREE.Mesh(
+		new THREE.BoxGeometry(0.5,3.5,4),
+		new THREE.MeshBasicMaterial({color:0xffffff}));
+	wallM2.position.set(10,-0.25,3);
+	scene.add(wallM2);
+	var wallM3 = new THREE.Mesh(
+		new THREE.BoxGeometry(0.5,1,2),
+		new THREE.MeshBasicMaterial({color:0xffffff}));
+	wallM3.position.set(10,1.25,0);
+	scene.add(wallM3);
+
+	    fotos();
+	    cuadros();
     </script>
   </body>
 </html>

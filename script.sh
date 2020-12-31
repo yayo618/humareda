@@ -2,11 +2,11 @@
 echo "function init(){" > fotos.js
 for i in {1..13}
 do
-let ww=$(identify \-format '%w' fotos/$i.jpg)
-let hh=$(identify \-format '%h' fotos/$i.jpg)
+let ww=$(identify \-format '%w' img/fotos/$i.jpg)
+let hh=$(identify \-format '%h' img/fotos/$i.jpg)
     echo "
 	//cuadro $i
-	var txt$i = new THREE.TextureLoader().load(\"fotos/$i.jpg\");
+	var txt$i = new THREE.TextureLoader().load(\"img/fotos/$i.jpg\");
 	var cdr$i = new THREE.Mesh(
 	    new THREE.PlaneGeometry($ww/1000,$hh/1000),
 	    new THREE.MeshBasicMaterial({color:0xffffff,map:txt$i})
@@ -22,11 +22,11 @@ let hh=$(identify \-format '%h' fotos/$i.jpg)
 done
 for i in {14..26}
 do
-let ww=$(identify \-format '%w' fotos/$i.jpg)
-let hh=$(identify \-format '%h' fotos/$i.jpg)
+let ww=$(identify \-format '%w' img/fotos/$i.jpg)
+let hh=$(identify \-format '%h' img/fotos/$i.jpg)
     echo "
 	//cuadro $i
-	var txt$i = new THREE.TextureLoader().load(\"fotos/$i.jpg\");
+	var txt$i = new THREE.TextureLoader().load(\"img/fotos/$i.jpg\");
 	var cdr$i = new THREE.Mesh(
 	    new THREE.PlaneGeometry($ww/1000,$hh/1000),
 	    new THREE.MeshBasicMaterial({color:0xffffff,map:txt$i})

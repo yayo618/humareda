@@ -152,7 +152,7 @@ var collide = function (){
 	restringeMZP ();
 	restringeMZPL ();
     }
-    if (camera.position.x>9.5){
+    if (camera.position.x>29.5){
 	restringeMXP ();
 	restringeMXPL ();
     }
