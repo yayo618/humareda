@@ -219,7 +219,14 @@
       muroCb.rotation.x = +Math.PI/2;
       scene.add(muroCa,muroCb);
 	    fotos();
-	    cuadros();
+      cuadros();
+
+      //resize
+      window.addEventListener('resize',function(){
+      renderer.setSize(window.innerWidth,window.innerHeight);
+      camera.aspect = window.innerWidth/window.innerHeight;
+      camera.updateProjectionMatrix();
+      });
     </script>
   </body>
 </html>
