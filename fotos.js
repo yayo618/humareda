@@ -138,15 +138,15 @@ var fotos = function (){
 	//cuadro 10
 	var txt10 = new THREE.TextureLoader().load("img/fotos/10.jpg");
 	var cdr10 = new THREE.Mesh(
-	    new THREE.PlaneGeometry(270/1000,300/1000),
+	    new THREE.PlaneGeometry(270/1000*2,300/1000*2),
 	    new THREE.MeshBasicMaterial({color:0xffffff,map:txt10})
 	);
 	//borde cuadro 10
 	var cdrB10 = new THREE.Mesh(
-	    new THREE.BoxGeometry(270/1000,300/1000,0.05,0),
+	    new THREE.BoxGeometry(270/1000*2,300/1000*2,0.05,0),
 	    new THREE.MeshBasicMaterial({color:0x232117})
 	);
-	cdr10.position.set((10*1.5)-10.5,0,-4.9);
+    cdr10.position.set((10*1.5)-10.5,0,-4.9);
 	cdrB10.position.set((10*1.5)-10.5,0,-4.925);
 	scene.add(cdr10,cdrB10);
 
@@ -249,12 +249,12 @@ var fotos = function (){
 	//cuadro 16
 	var txt16 = new THREE.TextureLoader().load("img/fotos/16.jpg");
 	var cdr16 = new THREE.Mesh(
-	    new THREE.PlaneGeometry(225/1000,224/1000),
+	    new THREE.PlaneGeometry(225/1000*2,224/1000*2),
 	    new THREE.MeshBasicMaterial({color:0xffffff,map:txt16})
 	);
 	//borde cuadro 16
 	var cdrB16 = new THREE.Mesh(
-	    new THREE.BoxGeometry(225/1000,224/1000,0.05,0),
+	    new THREE.BoxGeometry(225/1000*2,224/1000*2,0.05,0),
 	    new THREE.MeshBasicMaterial({color:0x232117})
 	);
 	cdr16.position.set(((16-13)*1.5)-10.5,0,4.9);
@@ -266,12 +266,12 @@ var fotos = function (){
 	//cuadro 17
 	var txt17 = new THREE.TextureLoader().load("img/fotos/17.jpg");
 	var cdr17 = new THREE.Mesh(
-	    new THREE.PlaneGeometry(320/1000,252/1000),
+	    new THREE.PlaneGeometry(320/1000*2,252/1000*2),
 	    new THREE.MeshBasicMaterial({color:0xffffff,map:txt17})
 	);
 	//borde cuadro 17
 	var cdrB17 = new THREE.Mesh(
-	    new THREE.BoxGeometry(320/1000,252/1000,0.05,0),
+	    new THREE.BoxGeometry(320/1000*2,252/1000*2,0.05,0),
 	    new THREE.MeshBasicMaterial({color:0x232117})
 	);
 	cdr17.position.set(((17-13)*1.5)-10.5,0,4.9);
@@ -300,12 +300,12 @@ var fotos = function (){
 	//cuadro 19
 	var txt19 = new THREE.TextureLoader().load("img/fotos/19.jpg");
 	var cdr19 = new THREE.Mesh(
-	    new THREE.PlaneGeometry(150/1000,161/1000),
+	    new THREE.PlaneGeometry(150/1000*2,161/1000*2),
 	    new THREE.MeshBasicMaterial({color:0xffffff,map:txt19})
 	);
 	//borde cuadro 19
 	var cdrB19 = new THREE.Mesh(
-	    new THREE.BoxGeometry(150/1000,161/1000,0.05,0),
+	    new THREE.BoxGeometry(150/1000*2,161/1000*2,0.05,0),
 	    new THREE.MeshBasicMaterial({color:0x232117})
 	);
 	cdr19.position.set(((19-13)*1.5)-10.5,0,4.9);
@@ -334,12 +334,12 @@ var fotos = function (){
 	//cuadro 21
 	var txt21 = new THREE.TextureLoader().load("img/fotos/21.jpg");
 	var cdr21 = new THREE.Mesh(
-	    new THREE.PlaneGeometry(320/1000,252/1000),
+	    new THREE.PlaneGeometry(320/1000*2,252/1000*2),
 	    new THREE.MeshBasicMaterial({color:0xffffff,map:txt21})
 	);
 	//borde cuadro 21
 	var cdrB21 = new THREE.Mesh(
-	    new THREE.BoxGeometry(320/1000,252/1000,0.05,0),
+	    new THREE.BoxGeometry(320/1000*2,252/1000*2,0.05,0),
 	    new THREE.MeshBasicMaterial({color:0x232117})
 	);
 	cdr21.position.set(((21-13)*1.5)-10.5,0,4.9);
@@ -351,12 +351,12 @@ var fotos = function (){
 	//cuadro 22
 	var txt22 = new THREE.TextureLoader().load("img/fotos/22.jpg");
 	var cdr22 = new THREE.Mesh(
-	    new THREE.PlaneGeometry(186/1000,271/1000),
+	    new THREE.PlaneGeometry(186/1000*2,271/1000*2),
 	    new THREE.MeshBasicMaterial({color:0xffffff,map:txt22})
 	);
 	//borde cuadro 22
 	var cdrB22 = new THREE.Mesh(
-	    new THREE.BoxGeometry(186/1000,271/1000,0.05,0),
+	    new THREE.BoxGeometry(186/1000*2,271/1000*2,0.05,0),
 	    new THREE.MeshBasicMaterial({color:0x232117})
 	);
 	cdr22.position.set(((22-13)*1.5)-10.5,0,4.9);
@@ -368,12 +368,12 @@ var fotos = function (){
 	//cuadro 23
 	var txt23 = new THREE.TextureLoader().load("img/fotos/23.jpg");
 	var cdr23 = new THREE.Mesh(
-	    new THREE.PlaneGeometry(183/1000,275/1000),
+	    new THREE.PlaneGeometry(183/1000*2,275/1000*2),
 	    new THREE.MeshBasicMaterial({color:0xffffff,map:txt23})
 	);
 	//borde cuadro 23
 	var cdrB23 = new THREE.Mesh(
-	    new THREE.BoxGeometry(183/1000,275/1000,0.05,0),
+	    new THREE.BoxGeometry(183/1000*2,275/1000*2,0.05,0),
 	    new THREE.MeshBasicMaterial({color:0x232117})
 	);
 	cdr23.position.set(((23-13)*1.5)-10.5,0,4.9);
@@ -402,12 +402,12 @@ var fotos = function (){
 	//cuadro 25
 	var txt25 = new THREE.TextureLoader().load("img/fotos/25.jpg");
 	var cdr25 = new THREE.Mesh(
-	    new THREE.PlaneGeometry(274/1000,184/1000),
+	    new THREE.PlaneGeometry(274/1000*2,184/1000*2),
 	    new THREE.MeshBasicMaterial({color:0xffffff,map:txt25})
 	);
 	//borde cuadro 25
 	var cdrB25 = new THREE.Mesh(
-	    new THREE.BoxGeometry(274/1000,184/1000,0.05,0),
+	    new THREE.BoxGeometry(274/1000*2,184/1000*2,0.05,0),
 	    new THREE.MeshBasicMaterial({color:0x232117})
 	);
 	cdr25.position.set(((25-13)*1.5)-10.5,0,4.9);

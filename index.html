@@ -22,21 +22,24 @@
       camera = new THREE.PerspectiveCamera(60,
         window.innerWidth/window.innerHeight);
       camera.position.x = 5;
-      camera.rotation.y = Math.PI/3;
+      camera.rotation.y = -Math.PI/3;
       renderer = new THREE.WebGLRenderer();
       renderer.setSize(window.innerWidth,window.innerHeight);
       document.body.appendChild(renderer.domElement);
       //afuera
       var afueraTxr = new THREE.CubeTextureLoader();
-      afueraTxr.setPath('../textiles/img/vent/');
+      afueraTxr.setPath('img/vent/');
       var txrAfuera = afueraTxr.load([
 	  'ee1.jpg','ee4.jpg',
 	  'ee4.jpg','ee4.jpg',
 	  'ee2.jpg','ee3.jpg']);
       scene.background = txrAfuera;
       //piso
-      var txrFloor = new THREE.TextureLoader(); 
-      var floorTxr = new txrFloor.load("../textiles/img/PISOa.png");
+      var txrFloor = new THREE.TextureLoader();
+      var floorTxr = new txrFloor.load("img/PISOa.png");
+      floorTxr.wrapS = THREE.RepeatWrapping;
+      floorTxr.wrapT = THREE.RepeatWrapping;
+      floorTxr.repeat.set(1,2);
       var floor = new THREE.Mesh(
 	  new THREE.PlaneGeometry(10,40,10,10),
 	  new THREE.MeshBasicMaterial({color:0xffffff,map:floorTxr}));
@@ -46,7 +49,10 @@
       scene.add(floor);
       //techo
       var txrCeil = new THREE.TextureLoader();
-      var ceilTxr = new txrCeil.load("../textiles/img/TECHOa.png");
+      var ceilTxr = new txrCeil.load("img/TECHOa.png");
+      ceilTxr.wrapS = THREE.RepeatWrapping;
+      ceilTxr.wrapT = THREE.RepeatWrapping;
+      ceilTxr.repeat.set(1,2);
       var ceil = new THREE.Mesh(
 	  new THREE.PlaneGeometry(10,40,10,10),
 	  new THREE.MeshBasicMaterial({color:0xffffff,map:ceilTxr}));
@@ -56,7 +62,7 @@
       scene.add(ceil);    
       //pared1
       var txrWallA = new THREE.TextureLoader();
-      var wallATxr = new txrWallA.load("../textiles/img/wall1R.png");
+      var wallATxr = new txrWallA.load("img/wall1R.png");
       var wallA = new THREE.Mesh(
 	  new THREE.PlaneGeometry(40,3.5),
 	  new THREE.MeshBasicMaterial({color:0xffffff,map:wallATxr}));
@@ -68,23 +74,134 @@
       wallB.position.set(10,-0.25,5);
       wallB.rotation.y = Math.PI;
       scene.add(wallA,wallB);
-	    //pared al medio
+      //pared3
+      var txrWallC = new THREE.TextureLoader();
+      var wallCTxr = new txrWallC.load("img/wc1.png");
+      var wallC = new THREE.Mesh(
+	  new THREE.PlaneGeometry(10,1.5),
+	  new THREE.MeshBasicMaterial({color:0xffffff,map:wallCTxr}));
+      wallC.position.set(-10,-1.25,0);
+      wallC.rotation.y = Math.PI/2;
+      var txrWallCC = new THREE.TextureLoader();
+      var wallCCTxr = new txrWallCC.load("img/wc2.png");
+      var wallCC = new THREE.Mesh(
+	  new THREE.PlaneGeometry(3,2),
+	  new THREE.MeshBasicMaterial({color:0xffffff,map:wallCCTxr}));
+      wallCC.position.set(-10,0.5,-3.5);
+      wallCC.rotation.y = Math.PI/2;
+      var txrWallCCC = new THREE.TextureLoader();
+      var wallCCCTxr = new txrWallCCC.load("img/wc3.png");
+      var wallCCC = new THREE.Mesh(
+	  new THREE.PlaneGeometry(3,2),
+	  new THREE.MeshBasicMaterial({color:0xffffff,map:wallCCCTxr}));
+      wallCCC.position.set(-10,0.5,3.5);
+      wallCCC.rotation.y = Math.PI/2;
+      var muroa = new THREE.Mesh(
+	  new THREE.BoxGeometry(-4,-2,-0.6,0),
+	  new THREE.MeshBasicMaterial({color:0xa6a6ae}));
+      muroa.position.set(-10.3,0.5,0);
+      muroa.rotation.y = Math.PI/2;
+      var murob = new THREE.Mesh(
+	  new THREE.PlaneGeometry(0.6,4),
+	  new THREE.MeshBasicMaterial({color:0x90909a}));
+      murob.position.set(-10.3,-0.5,0);
+      murob.rotation.x = -Math.PI/2;
+      var muroc = new THREE.Mesh(
+	  new THREE.PlaneGeometry(0.6,4),
+	  new THREE.MeshBasicMaterial({color:0x64646e}));
+      muroc.position.set(-10.3,1.5,0);
+      muroc.rotation.x = Math.PI/2;
+      var bar1 = new THREE.Mesh(
+	  new THREE.BoxGeometry(0.02,0.02,4),
+	  new THREE.MeshBasicMaterial({color:0x000000}));
+      bar1.position.set(-10.3,1.5,0);
+      var bar2 = new THREE.Mesh(
+	  new THREE.BoxGeometry(0.02,0.02,4),
+	  new THREE.MeshBasicMaterial({color:0x000000}));
+      bar2.position.set(-10.3,-0.5,0);
+      var bar3 = new THREE.Mesh(
+	  new THREE.BoxGeometry(0.02,2,0.02),
+	  new THREE.MeshBasicMaterial({color:0x000000}));
+      bar3.position.set(-10.3,0.5,2);
+      var bar4 = new THREE.Mesh(
+	  new THREE.BoxGeometry(0.02,2,0.02),
+	  new THREE.MeshBasicMaterial({color:0x000000}));
+      bar4.position.set(-10.3,0.5,1);
+      var bar5 = new THREE.Mesh(
+	  new THREE.BoxGeometry(0.02,2,0.02),
+	  new THREE.MeshBasicMaterial({color:0x000000}));
+      bar5.position.set(-10.3,0.5,0);
+      var bar6 = new THREE.Mesh(
+	  new THREE.BoxGeometry(0.02,2,0.02),
+	  new THREE.MeshBasicMaterial({color:0x000000}));
+      bar6.position.set(-10.3,0.5,-1);
+      var bar7 = new THREE.Mesh(
+	  new THREE.BoxGeometry(0.02,2,0.02),
+	  new THREE.MeshBasicMaterial({color:0x000000}));
+      bar7.position.set(-10.3,0.5,-2);
+      var bar8 = new THREE.Mesh(
+	  new THREE.BoxGeometry(0.02,0.02,4),
+	  new THREE.MeshBasicMaterial({color:0x000000}));
+      bar8.position.set(-10.3,1,0);
+      //pared4
+      var txrWallD = new THREE.TextureLoader();
+      var wallDTxr = new txrWallD.load("img/wall2R.png");
+      var wallD = new THREE.Mesh(
+	  new THREE.PlaneGeometry(10,3.5),
+	  new THREE.MeshBasicMaterial({color:0xffffff,map:wallDTxr}));
+      wallD.position.set(30,-0.25,0);
+      wallD.rotation.y = -Math.PI/2;
+      scene.add(wallA,wallB,wallC,wallCC,wallCCC,wallD,muroa,murob,muroc);
+      scene.add(bar1,bar2,bar3,bar4,bar5,bar6,bar7,bar8);
+
+      
+      //pared al medio
+      /*
 	var wallM = new THREE.Mesh(
 		new THREE.BoxGeometry(0.5,3.5,4),
 		new THREE.MeshBasicMaterial({color:0xffffff}));
 	wallM.position.set(10,-0.25,-3);
-	scene.add(wallM);
+//	scene.add(wallM);
 	var wallM2 = new THREE.Mesh(
 		new THREE.BoxGeometry(0.5,3.5,4),
 		new THREE.MeshBasicMaterial({color:0xffffff}));
 	wallM2.position.set(10,-0.25,3);
-	scene.add(wallM2);
+      scene.add(wallM2);
+      */
 	var wallM3 = new THREE.Mesh(
 		new THREE.BoxGeometry(0.5,1,2),
 		new THREE.MeshBasicMaterial({color:0xffffff}));
 	wallM3.position.set(10,1.25,0);
-	scene.add(wallM3);
+//        scene.add(wallM3);
 
+      var txrWallm1 = new THREE.TextureLoader();
+      var wallm1Txr = new txrWallm1.load("img/wallm1.png");      
+      var wallm1 = new THREE.Mesh(
+	  new THREE.PlaneGeometry(4,3.5),
+	  new THREE.MeshBasicMaterial({color:0xffffff,map:wallm1Txr})
+      );
+      wallm1.position.set(9.75,-0.25,-3);
+      wallm1.rotation.y-=Math.PI/2;
+      scene.add(wallm1);
+      var txrWallm2 = new THREE.TextureLoader();
+      var wallm2Txr = new txrWallm2.load("img/wallm2.png");      
+      var wallm2 = new THREE.Mesh(
+	  new THREE.PlaneGeometry(4,3.5),
+	  new THREE.MeshBasicMaterial({color:0xffffff,map:wallm2Txr})
+      );
+      wallm2.position.set(9.75,-0.25,3);
+      wallm2.rotation.y-=Math.PI/2;
+      scene.add(wallm2);
+      var txrWallm3 = new THREE.TextureLoader();
+      var wallm3Txr = new txrWallm3.load("img/wallm3.png");      
+      var wallm3 = new THREE.Mesh(
+		new THREE.PlaneGeometry(2,0.5),
+	  new THREE.MeshBasicMaterial({color:0xffffff,map:wallm3Txr}));
+      wallm3.position.set(9.75,1.25,0);
+//      wallm3.rotation.x-=Math.PI;
+      wallm3.rotation.y-=Math.PI/2;
+        scene.add(wallm3);
+      
 	    fotos();
 	    cuadros();
     </script>
