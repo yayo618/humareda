@@ -52,7 +52,6 @@ body.addEventListener('click',moveMouse,false);
 function startMouse(e){
     imX = e.clientX;
     imY = e.clientY;
-
 }
 function moveMouse(e){
     //	  if (imX === null){return;}
@@ -157,7 +156,63 @@ var collide = function (){
 	restringeMXPL ();
     }
     //collide con azul
-    //collide con rojo
+    var COLLISION = {
+	NONE:-1,
+	ADELANTE:0,
+	ATRAS:1,
+	LADO:2
+    };
+    var state = COLLISION.ADELANTE;
+    if (camera.position.z<-0.7&&camera.position.x>9.25&&camera.position.x<10.75){
+	if (camera.position.x<9.3){state = COLLISION.ADELANTE;}
+	if (camera.position.x>10.7){state = COLLISION.ATRAS;}
+	if (camera.position.z>-0.75){state = COLLISION.LADO;}
+	switch (state){
+	case COLLISION.ADELANTE:
+	    restringeMXP();
+	    restringeMXPL();
+	    break;
+	case COLLISION.ATRAS:
+	    restringeMXN();
+	    restringeMXNL();
+	    break;
+	case COLLISION.LADO:
+	    restringeMZN();
+	    restringeMZNL();
+	    break;
+	default:
+	    state = COLLISION.NONE;
+	}
+    }
+/*
+    if (state==COLLISION.ADELANTE){
+	    restringeMXP();
+	    restringeMXPL();
+    }
+	  /*camara collide con AZUL
+	  if (camera.position.z<-0.7&&camera.position.x>9.25&&camera.position.x<10.75){
+	    if (camera.position.x>9.3){
+		restringeMZN();
+		restringeMZNL();
+	    }
+	    else if (camera.position.z<-0.8){
+		restringeMXP();
+		restringeMXPL();
+	    }
+	    else {nStopM();}
+	  }
+	  //camara collide con ROJO
+	  if (camera.position.z>16.75&&camera.position.x<27){
+	    if (camera.position.x<26.9){
+		restringeMZP();
+		restringeMZPL();
+	    }
+	    else if (camera.position.z>16.85){
+		restringeMXN();
+		restringeMXNL();
+	    }
+	    else {nStopM();}
+	  }*/
 }
 // movimientos camara en x z
 var movXn = function (){camera.position.x -=
